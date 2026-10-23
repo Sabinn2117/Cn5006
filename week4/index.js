@@ -41,6 +41,10 @@ async function insertMany() {
         { name: 'MaryNHQ', age: 27, gender: 'Female', salary: 5402, city: 'Birmingham' },
         { name: 'MikeNJQ', age: 40, gender: 'Male', salary: 4519, city: 'London' }
     ];
+    await Person.insertMany([
+    { name: 'SimonNHQ', age: 42, gender: 'Male', salary: 3456, city: 'Manchester' },
+    { name: 'NeeshaNN', age: 53, gender: 'Female', salary: 1000, city: 'London' }
+]);
     const result = await Person.insertMany(manypersons);
     console.log('Many documents inserted');
     console.log(result);
@@ -114,6 +118,7 @@ async function main() {
         await mongoose.connect(MONGO_URI);
         console.log(`Connected to ${MONGO_URI}`);
 
+        await Person.deleteMany({});
         await insertOne();
         await insertMany();
         await findAll();
